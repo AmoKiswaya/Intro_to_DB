@@ -1,11 +1,15 @@
 import mysql.connector
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 def create_database():
     try:
         connection = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='25400'
+            host=os.environ['ALX_HOST'],
+            user=os.environ['ALX_USER'],
+            password=os.environ['ALX_PASSWORD']
         )
 
         if connection.is_connected():
@@ -21,4 +25,4 @@ def create_database():
             connection.close()
 
 if __name__ == "__main__":
-    create_database()
+    create_database() 
